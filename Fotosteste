@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Compartilhar Localização</title>
+</head>
+<body>
+  <h2>Clique no botão para compartilhar sua localização</h2>
+  <button onclick="getLocation()">Compartilhar Localização</button>
+
+  <script>
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          const lat = position.coords.latitude;
+          const lon = position.coords.longitude;
+          const link = `https://wa.me/?text=Minha%20localização%3A%20https%3A%2F%2Fwww.google.com%2Fmaps%2F?q=${lat},${lon}`;
+          window.location.href = link;
+        });
+      } else {
+        alert("Geolocalização não é suportada pelo navegador.");
+      }
+    }
+  </script>
+</body>
+</html>
